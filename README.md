@@ -7,13 +7,13 @@ A production-ready, type-safe Permission-Based Access Control (PBAC) system for 
 ### 1. Install Dependencies
 
 ```bash
-npm install react-router-dom jwt-decode
+yarn install
 ```
 
 ### 2. Run Development Server
 
 ```bash
-npm run dev
+yarn dev
 ```
 
 ### 3. Test the System
@@ -43,10 +43,10 @@ src/
 ├── context/AuthContext.tsx   # Auth state management
 ├── components/auth/
 │   ├── ProtectedRoute.tsx    # Route-level guards
-│   └── PermissionGate.tsx    # UI-level guards
+│   └── RoleGate.tsx          # UI-level guards
 └── pages/
     ├── LoginPage.tsx         # Mock JWT login
-    ├── UsersPage.tsx         # Demo page with PBAC
+    ├── UsersPage.tsx         # Demo page with RBAC
     └── UnauthorizedPage.tsx  # 403 page
 ```
 
@@ -67,33 +67,9 @@ See [SECURITY_ARCHITECTURE.md](./SECURITY_ARCHITECTURE.md) for:
 ## 🎯 Permission Model
 
 ```typescript
-enum Permission {
-  UsersView = "users:view", // View user list
-  UsersCreate = "users:create", // Create new users
-  UsersUpdate = "users:update", // Edit existing users
-  UsersDelete = "users:delete", // Delete users
+export enum Role {
+  USER = "USER",
+  ADMIN = "ADMIN",
+  SUPER_ADMIN = "SUPER_ADMIN",
 }
 ```
-
-## 📝 Usage Example
-
-```tsx
-import { PermissionGate } from "./components/auth/PermissionGate";
-import { Permission } from "./types/auth.types";
-
-// Only users with users:create permission will see this button
-<PermissionGate permission={Permission.UsersCreate}>
-  <button>Create User</button>
-</PermissionGate>;
-```
-
-## 🚨 Important Notes
-
-- Frontend permissions are for **UX only**
-- **ALWAYS validate permissions on the backend**
-- JWT tokens in demo are for testing only
-- Replace mock tokens with real API integration
-
----
-
-**Built for enterprise security standards** 🔒
