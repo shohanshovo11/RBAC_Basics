@@ -65,7 +65,7 @@ export const LoginPage: React.FC = () => {
             <Heading size="lg" color="white" mb={1}>
               RBAC Demo
             </Heading>
-            <Text color="gray.300">Permission-based access control showcase</Text>
+            <Text color="gray.300">Role-based access control showcase</Text>
           </CardHeader>
           <CardBody>
             {error && (
