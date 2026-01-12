@@ -5,6 +5,7 @@ import { LoginPage } from "./pages/LoginPage";
 import { DashboardPage } from "./pages/DashboardPage";
 import { UsersPage } from "./pages/UsersPage";
 import { UnauthorizedPage } from "./pages/UnauthorizedPage";
+import { Role } from "./types";
 
 function App() {
   return (
